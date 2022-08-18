@@ -36,10 +36,7 @@ def createTempDir():
     """create temp dirs"""
     print("Creating temp dirs ...")
     tmpdir = Path(tempfile.mkdtemp())
-    # tmpdir_extract = Path(tempfile.mkdtemp())
-    # os.makedirs(tmpdir_extract, exist_ok=True)
-    # os.makedirs(tmpdir_toggleTools, exist_ok=True)
-    webbrowser.open(release_dir)
+    # webbrowser.open(release_dir)
     return tmpdir
 
 
@@ -148,12 +145,10 @@ def copyUpdaterUIToZipDir(addon_temp_Path):
 
 def makeZipFile(zipRoot, name):
     print("creating zip File ... ")
-    webbrowser.open(Path(zipRoot))
-
     archive = shutil.make_archive(
         base_name=name, format="zip", root_dir=zipRoot, base_dir=os.listdir(zipRoot)[0]
     )
-    return archive
+    return Path(archive)
 
 
 def editingIniPyFile():
@@ -235,7 +230,8 @@ def editingIniPyFile():
     )
 
     print("moving zip to release dir ...")
-    shutil.move(zipfile, release_dir)
+    zipfile = Path(shutil.move(zipfile, release_dir / zipfile.name))
+    webbrowser.open(zipfile.parent)
 
     print("DONE!")
 
