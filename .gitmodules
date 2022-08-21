@@ -1,3 +1,0 @@
-[submodule "blender-addon-updater"]
-path = src/blender-addon-updater
-    url = https://github.com/CGCookie/blender-addon-updater.git
