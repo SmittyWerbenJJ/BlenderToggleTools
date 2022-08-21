@@ -16,7 +16,7 @@ bl_info = {
     "author" : "SmittyWerben", 
     "description" : "Toggle Various Options For many Objects",
     "blender" : (3, 0, 0),
-    "version" : (0, 1, 3),
+    "version" : (0, 1, 4),
     "location" : "3D-Viewe > Top Bar",
     "warning" : "",
     "doc_url": "https://github.com/SmittyWerbenJJ/BlenderToggleTools/wiki", 
