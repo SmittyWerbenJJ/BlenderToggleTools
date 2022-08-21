@@ -95,7 +95,7 @@ with tempfile.TemporaryDirectory() as tmpdirname:
     print("zippiing up ...")
 
     zipfile = shutil.make_archive(
-        base_name="CPU" + latest_serpens_zip.stem,
+        base_name=latest_serpens_zip.stem,
         format="zip",
         root_dir=tmpdirname,
         base_dir=os.listdir(tmpdirname)[0],
