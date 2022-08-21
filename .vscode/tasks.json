@@ -8,7 +8,7 @@
             "type": "shell",
             "command": "python",
             "args": [
-                "${workspaceFolder}${pathSeparator}automation${pathSeparator}packAutoUpdaterToAddon.py"
+                "${workspaceFolder}${pathSeparator}.vscode${pathSeparator}automation.py"
             ]
         }
     ]
