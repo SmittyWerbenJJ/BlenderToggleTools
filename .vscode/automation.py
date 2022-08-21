@@ -13,7 +13,8 @@ bin_dir = Path.joinpath(workspace_root_dir, "src/bin/")
 serpens_dir = Path.joinpath(workspace_root_dir, "src/serpens/")
 addon_updater_files_dir = workspace_root_dir / "src" / "python" / "AddonUpdater"
 automation_template_dir = workspace_root_dir / "src/python/automation/template"
-toggle_tools_dir = workspace_root_dir / "blender_toggle_tools"
+toggle_tools_release_dir = workspace_root_dir / "blender_toggle_tools"
+toggle_tools_dir = workspace_root_dir / "src/python/toggleTools/"
 
 # get latest serpens zip file
 globs = glob.glob(str(serpens_dir / "*"))
@@ -86,6 +87,10 @@ with tempfile.TemporaryDirectory() as tmpdirname:
             except Exception:
                 pass
 
+    # copy toggle tools next to init.py
+    for f in toggle_tools_dir.iterdir():
+        shutil.copy(f, initFile.parent)
+
     # zip temp dir
     print("zippiing up ...")
 
@@ -102,11 +107,11 @@ with tempfile.TemporaryDirectory() as tmpdirname:
 
     # extract zip file to blender_toogle_tools
     print("clearing extract dir ...")
-    for root, dirs, files in os.walk(toggle_tools_dir):
+    for root, dirs, files in os.walk(toggle_tools_release_dir):
         for d in dirs:
-            shutil.rmtree(os.path.join(root, d),ignore_errors=True)
+            shutil.rmtree(os.path.join(root, d), ignore_errors=True)
         for f in files:
-            shutil.rmtree(os.path.join(root, f),ignore_errors=True)
+            shutil.rmtree(os.path.join(root, f), ignore_errors=True)
 
     print("final unzipping ...")
     shutil.unpack_archive(zipfile, workspace_root_dir)
